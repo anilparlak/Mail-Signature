@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail Signature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        /* font: 14px "Lato", Arial, sans-serif; */
+        font-family: "Roboto", sans-serif !important;
+      }
+      .container {
+        margin: 0 auto;
+        max-width: 1200px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 960px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 100px 0;
+        justify-content: space-between;
+      }
+      .inputs {
+        width: 30%;
+      }
+      label {
+        display: block;
+      }
+
+      :focus {
+        outline: none;
+      }
+      input[type="text"],
+      input[type="tel"],
+      input[type="email"] {
+        /* font: 15px/24px "Lato", Arial, sans-serif; */
+        color: #333;
+        width: 100%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+      }
+      .effect-1 {
+        border: 0;
+        padding: 7px 0;
+        border-bottom: 1px solid #ccc;
+      }
+      .col-3 {
+        position: relative;
+        margin-bottom: 15px;
+      }
+      .effect-1 ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #ed6f68;
+        transition: 0.4s;
+      }
+      .effect-1:focus ~ .focus-border {
+        width: 100%;
+        transition: 0.4s;
+      }
+      button {
+        width: 8em;
+        height: 3em;
+        border: none;
+        border-radius: 0.25em;
+        color: white;
+        cursor: pointer;
+        transition-duration: 0.25s;
+        background-color: teal;
+      }
+      button:hover {
+        background-color: rgba(0, 128, 128, 0.759);
+      }
+
+      @media screen and (max-width: 1096px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+          padding: 50px 0;
+          width: 100%;
+        }
+        .inputs {
+          width: 75%;
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 25px;
+        }
+        .col-3 {
+          width: 40%;
+        }
+        button {
+          display: block;
+          margin-left: 32vw;
+        }
+      }
+      @media screen and (max-width: 610px) {
+        .inputs {
+          width: 100%;
+          padding: 0 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="inputs">
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Name"
+            id="nameInput"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Surname"
+            id="surInput"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Title"
+            id="titleInput"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Address-1 Name"
+            id="addressNameInput1"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Address-1"
+            id="addressInput1"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Address-2 Name"
+            id="addressNameInput2"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Address-2"
+            id="addressInput2"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="tel"
+            placeholder="Phone"
+            id="phoneInput"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="email"
+            placeholder="Mail"
+            id="mailInput"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-3">
+          <input
+            class="effect-1"
+            type="text"
+            placeholder="Web Address"
+            id="webInput"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <button class="accept-btn" name="accept-btn" onclick="copyFunc()">
+          Copy
+        </button>
+      </div>
+      <div style="border: 2px solid #9e9e9e">
+        <table
+          id="myTable"
+          style="
+            width: 380px;
+            padding: 25px 0;
+            font-family: 'Roboto', sans-serif;
+            line-height: normal;
+            border-spacing: 0;
+          "
+          cellpadding="0"
+          cellspacing="0"
+        >
+          <tbody>
+            <tr>
+              <td rowspan="11" style="vertical-align: top">
+                <span
+                  style="
+                    width: 30px;
+                    height: 100px;
+                    display: block;
+                    background: #ff6562;
+                    border-bottom-right-radius: 15px;
+                    border-top-right-radius: 15px;
+                  "
+                ></span>
+                <!-- <img style="width:30px; height:100px;" src="https://reevate.com/signature/assets/img/border.png" /> -->
+              </td>
+              <td style="padding-left: 19px;">
+                <br/>
+                <span
+                  id="nameSpan"
+                  style="color: #3d3939; font-size: 26px; font-weight: bold"
+                  >Name</span
+                >&nbsp;<span
+                  id="surSpan"
+                  style="
+                    color: #3d3939;
+                    font-size: 26px;
+                    /* margin-left: 10px; */
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    line-height: 40px;
+                  "
+                >
+                
+                  Surname</span
+                >
+                <br />
+                <span
+                  id="titleSpan"
+                  style="color: #3d3939; font-size: 18px; display: block"
+                  >Title</span
+                >
+                
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 19px">
+                <br/>
+                <img
+                  src="./logo.png"
+                  alt="medstar-logo"
+                  style="width: 251px; height: 55px; object-fit: cover"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="padding: 20px 0 0; font-weight: bold; padding-left: 19px"
+              >
+                <span
+                  id="address1SpanName"
+                  style="font-size: 16px; font-weight: 700; color: #3d3939"
+                  >Address-1:</span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 19px; padding-right: 80px">
+                <span
+                  id="address1Span"
+                  style="color: #3d3939; font-size: 14px; line-height: 18px"
+                  >3253 Emily Renzelli Boulevard North Carolina / United States</span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td
+                style="padding: 20px 0 0; font-weight: bold; padding-left: 19px"
+              >
+                <span
+                  id="address2SpanName"
+                  style="font-size: 16px; font-weight: 700; color: #3d3939"
+                  >Address-2</span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 19px; padding-right: 87px">
+                <span
+                  id="address2Span"
+                  style="color: #3d3939; font-size: 14px; line-height: 18px"
+                  >3253 Emily Renzelli Boulevard North Carolina / United States</span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 20px 0 0; padding-left: 19px">
+                <span style="color: #3d3939; font-weight: 700; font-size: 16px"
+                  ><a
+                    id="phoneSpan"
+                    style="
+                      color: #3d3939;
+                      font-weight: 700;
+                      font-size: 16px;
+                      text-decoration: none;
+                    "
+                    href="tel:(357) 299-6747"
+                    >(357) 299-6747</a
+                  ></span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 19px;">
+                <span style="color: #3d3939; font-size: 18px; font-weight: 700"
+                  ><a
+                    id="mailSpan"
+                    style="
+                      color: #3d3939;
+                      font-size: 16px;
+                      text-decoration: none;
+                      font-weight: 700;
+                    "
+                    href="mailto:random@random.com"
+                    >random@random.com</a
+                  ></span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 19px;">
+                <span
+                  style="
+                    color: #3d3939;
+                    font-size: 18px;
+                    font-weight: 700;
+                  "
+                  ><a
+                    id="webSpan"
+                    style="
+                      color: #3d3939;
+                      font-size: 16px;
+                      text-decoration: none;
+                      font-weight: 700;
+                    "
+                    href="www.yourwebsite.com"
+                    >www.yourwebsite.com</a
+                  ></span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 20px 0 0; padding-left: 19px">
+                <span style="font-size: 12px; color: #3d3939"
+                  >Random Name is Regulated by the random</span
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="padding-left: 0">
+                <img
+                  src="./green.png"
+                  alt="green"
+                  style="width: 15px; height: 15px; object-fit: cover"
+                />
+                <span style="color: #7ea46b; font-size: 12px"
+                  >Please consider the environment before printing this
+                  email.</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      var _name = document.getElementById("nameInput");
+      var _nameSpan = document.getElementById("nameSpan");
+
+      var _surname = document.getElementById("surInput");
+      var _surnameSpan = document.getElementById("surSpan");
+
+      var _phone = document.getElementById("phoneInput");
+      var _phoneSpan = document.getElementById("phoneSpan");
+
+      var _mail = document.getElementById("mailInput");
+      var _mailSpan = document.getElementById("mailSpan");
+
+      var _web = document.getElementById("webInput");
+      var _webSpan = document.getElementById("webSpan");
+
+      var _title = document.getElementById("titleInput");
+      var _titleSpan = document.getElementById("titleSpan");
+
+      var _addressName1 = document.getElementById("addressNameInput1");
+      var _addressInput1 = document.getElementById("addressInput1");
+      var _address1NameSpan = document.getElementById("address1SpanName");
+      var _address1Span = document.getElementById("address1Span");
+
+      var _addressName2 = document.getElementById("addressNameInput2");
+      var _addressInput2 = document.getElementById("addressInput2");
+      var _address2NameSpan = document.getElementById("address2SpanName");
+      var _address2Span = document.getElementById("address2Span");
+
+      _name.addEventListener("input", function (evt) {
+        _nameSpan.innerHTML = this.value;
+      });
+      _surname.addEventListener("input", function (evt) {
+        _surnameSpan.innerHTML = this.value;
+      });
+      _phone.addEventListener("input", function (evt) {
+        _phoneSpan.href = "tel:" + this.value;
+        _phoneSpan.innerHTML = this.value;
+      });
+      _mail.addEventListener("input", function (evt) {
+        _mailSpan.href = "mailto:" + this.value;
+        _mailSpan.innerHTML = this.value;
+      });
+      _web.addEventListener("input", function (evt) {
+        _webSpan.href = "https://" + this.value;
+        _webSpan.innerHTML = this.value;
+      });
+      _title.addEventListener("input", function (evt) {
+        _titleSpan.innerHTML = this.value;
+      });
+      _addressName1.addEventListener("input", function (evt) {
+        _address1NameSpan.innerHTML = this.value;
+      });
+      _addressInput1.addEventListener("input", function (evt) {
+        _address1Span.innerHTML = this.value;
+      });
+      _addressName2.addEventListener("input", function (evt) {
+        _address2NameSpan.innerHTML = this.value;
+      });
+      _addressInput2.addEventListener("input", function (evt) {
+        _address2Span.innerHTML = this.value;
+      });
+      var _table = document.getElementById("myTable");
+      function copyFunc() {
+        selectElementContents(_table);
+      }
+      function selectElementContents(el) {
+        var body = document.body,
+          range,
+          sel;
+        if (document.createRange && window.getSelection) {
+          range = document.createRange();
+          sel = window.getSelection();
+          sel.removeAllRanges();
+          range.selectNodeContents(el);
+          sel.addRange(range);
+        }
+        document.execCommand("Copy");
+        alert("Copy is successful");
+      }
+    </script>
+  </body>
+</html>
